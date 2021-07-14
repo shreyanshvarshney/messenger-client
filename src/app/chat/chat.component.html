@@ -1,0 +1,76 @@
+<div class="card mt-4">
+  <div class="card-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h2 class="navbar-brand m-0 mr-2"><span class="fa fa-comment"></span> &nbsp; Global Chat Room</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Active users
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item">User 1</a>
+              <a class="dropdown-item">User 2</a>
+              <a class="dropdown-item">User 3</a>
+              <a class="dropdown-item">User 4</a>
+            </div>
+          </li>
+        </ul>
+        <p><img class="message-img" src="https://image.flaticon.com/icons/svg/145/145867.svg" width="20px" height="20px"> {{name}}</p>
+      </div>
+    </nav>
+  </div>
+  <div class="card-body">
+    <div class="text-center">{{date | date: 'fullDate'}}</div>
+    <!-- <div class="left-message">
+      <div class="message-container">
+        <div class="message-info">
+          <p class="m-0"><b>John</b></p>
+        </div>
+        <div class="message-text">
+          <p class="m-0">Hello</p>
+        </div>
+      </div>
+    </div>
+    <div class="right-message">
+      <div class="message-container">
+        <div class="message-info">
+          <p class="m-0"><b>Hank</b></p>
+        </div>
+        <div class="message-text">
+          <p class="m-0">Hey</p>
+        </div>
+      </div>
+    </div> -->
+    <div *ngIf="roomChats.length > 0">
+      <div *ngFor="let item of roomChats" class="{{item?.side}}-message mb-2">
+        <div class="message-container">
+          <div class="message-info">
+            <p class="m-0"><b>{{item?.name}}</b></p>
+          </div>
+          <div class="message-text clearfix">
+            <p class="m-0 float-left message-content">{{item?.message}}</p>
+            <p class="m-0 ml-2 float-right text-muted message-time">{{item?.time | date: 'shortTime'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <form [formGroup]="chatForm">
+    <div class="input-group mb-2">
+      <input formControlName="message" (enter)="sendMessage(chatForm)" type="text" class="form-control h-auto" name="message" id="message"placeholder="Enter your message...">
+      <div class="input-group-prepend">
+        <div class="input-group-text p-0">
+          <button [disabled]="!chatForm.controls.message.value" (click)="sendMessage(chatForm)" class="btn btn-primary">Send <i class="fa fa-send"></i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

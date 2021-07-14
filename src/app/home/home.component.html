@@ -1,0 +1,29 @@
+<mat-card class="home-card text-center">
+    <mat-card-header></mat-card-header>
+    <div class="mb-2"><span class="fa fa-comment fa-2x"></span></div>
+    <h2 class="mb-2">Please enter your name</h2>
+    <mat-card-content>
+        <form>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="name" name="name" id="name">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button type="button" (click)="joinChat()" color="primary">Join</button>
+      <button mat-raised-button type="button" (click)="joinChatAnonymously()" color="primary">Join Anonymously</button>
+    </mat-card-actions>
+    <mat-card-content>
+        <div *ngIf="onlineUsers > 0; else zeroOnlineUsers;">
+            <div class="online-icon align-middle d-inline-block mr-1"></div>
+            <div class="align-middle d-inline-block">
+                <p class="m-0"> Online Member<span *ngIf="onlineUsers > 1">s</span>: {{onlineUsers}}</p>
+            </div>
+        </div>
+        <ng-template #zeroOnlineUsers>
+            <p>You will the first one to join.</p>
+        </ng-template>
+    </mat-card-content>
+</mat-card>
+  

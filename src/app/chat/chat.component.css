@@ -1,0 +1,47 @@
+:root {
+
+}
+
+.card-body {
+    overflow-y: scroll;
+}
+
+.message-container {
+    background-color: azure;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.left-message {
+    float: left;
+    clear: both;
+}
+
+.right-message {
+    float: right;
+    clear: both;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+.message-time {
+    font-size: 0.6rem;
+    vertical-align: text-bottom;
+}
+
+.message-content {
+    vertical-align: text-bottom;
+}
+
+message-img {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
